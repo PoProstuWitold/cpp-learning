@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <math.h>
-#include <algorithm>
+
 // command to include math.h lib needs to have flag -lm: gcc -o lab lab-10-13.cpp -lm
 using namespace std;
+
+#define AUTHOR "Witold Zawada"
+#define STUDY_INFO "informatyka I stopnia (stacjonarne)/semestr 1"
+#define GROUP "I1S 1.10/20"
+#define PROGRAM_NAME "Kalkulator z wyborami"
 
 // empty stdin helper
 void empty_stdin (void) { 
@@ -16,7 +21,7 @@ void empty_stdin (void) {
 int search_for_number(int *a, int search) {
 
     for(int i = 0; i < 100; i++) {
-        if(a[i] == search) {      // or if(*(a + i) == search)
+        if(a[i] == search) {      
             return 1;
         }
     }
@@ -28,27 +33,27 @@ char get_formula() {
     int formulaArray[] = { 1,2,3,41,42,43,44,45,46,47,48 };
     int userChoice, rtn = 0;
 
-    for (;;) {  /* loop continually until valid input or EOF */
+    for (;;) {  
         
         printf("\nPodaj wzór:");
-        rtn = scanf ("%d", &userChoice);    /* save return */
+        rtn = scanf ("%d", &userChoice);    
 
-        if (rtn == EOF) {   /* user generates manual EOF */
+        if (rtn == EOF) {   
             return 1;
         }
-        else if (rtn == 0) {    /* matching failure */
+        else if (rtn == 0) {    
             printf(" Błąd: Wartość nie jest numerem całkowitym.\n");
             empty_stdin();
         }
-        else if (!(search_for_number(formulaArray, userChoice))) {  /* validate range */
+        else if (!(search_for_number(formulaArray, userChoice))) {  
             printf(" Błąd: Wartość nie odpowiada żadnemu numerowi wzoru.\n");
             empty_stdin();
         }
-        else if (search_for_number(formulaArray, userChoice)) {  /* validate range */
+        else if (search_for_number(formulaArray, userChoice)) {  
             empty_stdin();
             break;
         }
-        else {  /* good input */
+        else {
             empty_stdin();
             break;
         }
@@ -57,20 +62,21 @@ char get_formula() {
     return userChoice;
 }
 
-int insert_number(float number, char const name[]) {
-        for (;;) {  /* loop continually until valid input or EOF */
+int insert_number(char const name[]) {
+    float number;
+        for (;;) {  
             int rtn = 0;
             printf("\nPodaj liczbe %s:", name);
-            rtn = scanf ("%f", &number);    /* save return */
+            rtn = scanf ("%f", &number);
 
-            if (rtn == EOF) {   /* user generates manual EOF */
+            if (rtn == EOF) {
                 return 1;
             }
-            else if (rtn == 0) {    /* matching failure */
+            else if (rtn == 0) {
                 printf(" Błąd: Liczba %s nie jest numerem rzeczywistym.\n", name);
                 empty_stdin();
             }
-            else {  /* good input */
+            else {
                 empty_stdin();
                 break;
             }
@@ -79,18 +85,8 @@ int insert_number(float number, char const name[]) {
         return number;
 }
 
-int main() {
-    int formula, formulaArray[] = { 1,2,3,41,42,43,44,45,46,47,48 };
-    float a, b, x, y;
-
-    // has to be this way to silent gcc compiler warnings
-    char const *a_name = "a", *b_name = "b";
-
-    printf( "autor: Witold Zawada\n"
-            "kierunek/semestr: informatyka I stopnia (stacjonarne)/semestr 1\n"
-            "grupa: I1S 1.10/20\n"
-            "program: Kalkulator z wyborami\n"
-            "-------------WZORY--------------\n"
+void print_formulas(void) {
+    printf("-------------WZORY--------------\n"
             "(1) Pole: x=a*b\n"
             "    Obwód: y=(2*a)+(2*b)\n"
             "(2) Pole: x=PI*a^2\n"
@@ -105,12 +101,26 @@ int main() {
             "(47) x=a+sqrt(a^2+((a^2+a)/3)^2)\n"
             "(48) x=2/3*(a+b)^3-sqrt(|a|)+10*b\n"
             "\n");
+}
+
+int main() {
+    int formula, formulaArray[] = { 1,2,3,41,42,43,44,45,46,47,48 };
+    float a, b, x, y;
+
+    // has to be this way to silent gcc compiler warnings
+    char const *a_name = "a", *b_name = "b";
+
+    printf("autor: %s\n", AUTHOR),
+    printf("kierunek/semestr: %s\n", STUDY_INFO);
+    printf("grupa: %s\n", GROUP);
+    printf("program: %s \n", PROGRAM_NAME);
+    print_formulas();
 
     do {
         formula = get_formula();
 
-        a = insert_number(a, a_name);
-        b = insert_number(b, b_name);
+        a = insert_number(a_name);
+        b = insert_number(b_name);
         
         switch(formula) {
         case 1:
