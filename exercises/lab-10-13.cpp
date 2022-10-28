@@ -18,7 +18,7 @@ void empty_stdin (void) {
 }
 
 //search for int in array
-int search_for_number(int *a, int search) {
+int search_in_array(int *a, int search) {
 
     for(int i = 0; i < 100; i++) {
         if(a[i] == search) {      
@@ -45,11 +45,11 @@ char get_formula() {
             printf(" Błąd: Wartość nie jest numerem całkowitym.\n");
             empty_stdin();
         }
-        else if (!(search_for_number(formulaArray, userChoice))) {  
+        else if (!(search_in_array(formulaArray, userChoice))) {  
             printf(" Błąd: Wartość nie odpowiada żadnemu numerowi wzoru.\n");
             empty_stdin();
         }
-        else if (search_for_number(formulaArray, userChoice)) {  
+        else if (search_in_array(formulaArray, userChoice)) {  
             empty_stdin();
             break;
         }
@@ -191,7 +191,7 @@ int main() {
             break;
     } 
     
-    } while(search_for_number(formulaArray, formula) && !(sizeof(a) == sizeof(int) && sizeof(b) == sizeof(int)));
+    } while(search_in_array(formulaArray, formula) && !(sizeof(a) == sizeof(int) && sizeof(b) == sizeof(int)));
         
 
     return 0;
