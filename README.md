@@ -1,6 +1,6 @@
-## About C and C++
+## About C and C++ [![My Skills](https://skillicons.dev/icons?i=c,cpp)](https://skillicons.dev)
 
-### C
+### C [![My Skills](https://skillicons.dev/icons?i=c)](https://skillicons.dev)
 C is a structured programming language developed by Dennis Ritchie in 1973 at Bell Laboratories. It is one of the most popular computer languages today because of its structure, high-level abstraction, and machine-independent feature. C language was developed with UNIX operating system, so it is strongly associated with UNIX, which is one of the most popular network operating systems in use today and the heart of the internet data superhighway.
 #### Characteristics of C
 - Small size
@@ -14,12 +14,12 @@ C is a structured programming language developed by Dennis Ritchie in 1973 at Be
 - Produces efficient programs.
 - Can be compiled on a variety of computers.
 
+#### C in 100 seconds
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/U3aXWizDbQ4/0.jpg)](https://www.youtube.com/watch?v=U3aXWizDbQ4)
 
-### C++
+### C++ [![My Skills](https://skillicons.dev/icons?i=cpp)](https://skillicons.dev)
 C++ is an upgraded version of C programming. The main idea behind creating C++ programming was to add object orientation to the C programming language. The major upgradations are object-oriented programming methodology, namespace feature, operator overloading, error & exception handling. The motivation behind object-oriented programming is to try to see the whole world in the form of classes & objects. 
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MNeX4EGtR5Y/0.jpg)](https://www.youtube.com/watch?v=MNeX4EGtR5Y)
 
 #### Characteristics of C++
 - Object Oriented
@@ -33,6 +33,10 @@ C++ is an upgraded version of C programming. The main idea behind creating C++ p
 - Pointers
 - Compiler based
 - Syntax based language
+
+#### C++ in 100 seconds
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MNeX4EGtR5Y/0.jpg)](https://www.youtube.com/watch?v=MNeX4EGtR5Y)
 
 ### Cheatsheets
 - [C Cheatsheet](https://www.codewithharry.com/blogpost/c-cheatsheet/)
