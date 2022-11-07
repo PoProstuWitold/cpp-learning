@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 // command to include math.h lib needs to have flag -lm: gcc -o lab lab-10-13.cpp -lm
-using namespace std;
 
 #define AUTHOR "Witold Zawada"
 #define STUDY_INFO "informatyka I stopnia (stacjonarne)/semestr 1"
@@ -141,7 +141,7 @@ int main() {
             printf("Obwod: %0.3f\n", y);
             break;
         case 3:
-            x=(float(a+b))/2;
+            x=a+b/2.0;
             printf("Wynik: %0.3f\n", x);
             break;
         case 41:

@@ -2,7 +2,6 @@
 #include <math.h>
 
 // command to include math.h lib needs to have flag -lm: gcc -o lab lab-10-13.cpp -lm
-using namespace std;
 
 #define AUTHOR "Witold Zawada"
 #define STUDY_INFO "informatyka I stopnia (stacjonarne)/semestr 1"

@@ -2,8 +2,6 @@
 #include <math.h>
 #include <ctype.h>
 
-using namespace std;
-
 #define AUTHOR "Witold Zawada"
 #define STUDY_INFO "informatyka I stopnia (stacjonarne)/semestr 1"
 #define GROUP "I1S 1.10/20"
