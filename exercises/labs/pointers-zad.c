@@ -22,7 +22,7 @@ int F1(int k, float T[], float *iloczyn);
 // 2.
 // return srednia
 // pointer ile liczb wiekszych od sredniej
-int F2(int k, float T[], int *ile_wiekszych);
+float F2(int k, float T[], int *ile_wiekszych);
 
 // 3.
 // return tablica, ale ujemne zamienione na 0
@@ -115,11 +115,13 @@ int F1(int k, float T[], float *iloczyn) {
     return 0; 
 }
 
-int F2(int k, float T[], int *ile_wiekszych) {
-    int ilosc = 0, i = 0;
+float F2(int k, float T[], int *ile_wiekszych) {
+    int i = 0;
     int _ile_wiekszych = 0;
-    float suma = 0;
-    float srednia = 0;
+    int ilosc = 0;
+    
+    float suma = 0.0;
+    float srednia = 0.0;
     
     for (i=0; i<k; i++) { 
         suma += T[i];
@@ -127,7 +129,7 @@ int F2(int k, float T[], int *ile_wiekszych) {
     }
 
     srednia = suma/ilosc;
-    //dobrze liczy, ale zle wyswietla
+
     for (i=0; i<k; i++) { 
         if(T[i] > srednia) {
             _ile_wiekszych++;
