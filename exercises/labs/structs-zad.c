@@ -39,6 +39,7 @@ int main() {
 
     printf("\nPodaj nazwe towaru do wyszukania: ");
 
+    fflush(stdin); // ZALEZY OD KOMPILATORA, ZŁA PRAKTYKA
     flushBuffer(); // WSZEDZIE
 
     fgets(nazwa, sizeof(nazwa), stdin);
@@ -51,6 +52,7 @@ int main() {
 void wypelnij(struct HURT *ts, int n)
 {
     for (int i = 0; i < n; ++i) {
+        fflush(stdin); // ZALEZY OD KOMPILATORA, ZŁA PRAKTYKA
         flushBuffer(); // WSZEDZIE
         
         printf("\nPodaj nazwe towaru: ");
