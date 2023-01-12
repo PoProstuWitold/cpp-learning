@@ -49,8 +49,7 @@ int main() {
     return 0;
 }
 
-void wypelnij(struct HURT *ts, int n)
-{
+void wypelnij(struct HURT *ts, int n) {
     for (int i = 0; i < n; ++i) {
         fflush(stdin); // ZALEZY OD KOMPILATORA, ZŁA PRAKTYKA
         flushBuffer(); // WSZEDZIE
@@ -64,8 +63,7 @@ void wypelnij(struct HURT *ts, int n)
     }
 }
 
-int maksymalna_cena(const struct HURT *ts, int n)
-{
+int maksymalna_cena(const struct HURT *ts, int n) {
     int ind = 0;
 
     for (int i = 1; i < n; ++i)
@@ -75,8 +73,7 @@ int maksymalna_cena(const struct HURT *ts, int n)
     return ind;
 }
 
-double srednia_wartosc(const struct HURT *ts, int n)
-{
+double srednia_wartosc(const struct HURT *ts, int n) {
     double suma = 0.0;
 
     for (int i = 0; i < n; ++i)
@@ -85,8 +82,7 @@ double srednia_wartosc(const struct HURT *ts, int n)
     return suma/n;
 }
 
-int ilosc_o_nazwie(const struct HURT *ts, int n, const char *s)
-{
+int ilosc_o_nazwie(const struct HURT *ts, int n, const char *s) {
     int ilosc = 0;
 
     for (int i = 0; i < n; ++i)
