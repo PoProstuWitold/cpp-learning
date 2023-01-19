@@ -3,7 +3,7 @@
 #include <string.h>
 
 // strcmp(t1, t2) == 0 - teksty są takie same
-//strcpy(t1, t2) - wpisuje t2 do t1
+// strcpy(t1, t2) - wpisuje t2 do t1
 
 typedef struct Hotel {
     char kod_pokoju[3]; //ilosc osob, np. p1, p2, p10
@@ -16,8 +16,8 @@ typedef struct Koszt {
     float koszt;
 } cost;
 
-cost *koszt(hotel *pokoje, int ilosc);
-int wolne(hotel *pokoje, int ilosc);
+cost* koszt(hotel *pokoje, int ilosc);
+hotel* wolne(hotel *pokoje, int ilosc, int *ile_wolnych);
 float zysk(hotel *pokoje, int ilosc);
 int rezerwacja(hotel *pokoje, int ilosc);
 
@@ -54,9 +54,20 @@ int main() {
         printf("\tkoszt na osobe: %f\n", koszt_osoby[j].koszt);
     }
     printf("\n");
+    printf("\n");
 
-    int wolne_pokoje = wolne(pokoje, ilosc);
-    printf("Liczba wolnych pokoi: %i\n", wolne_pokoje);
+    int ile_wolnych = 0;
+    hotel *wolne_pokoje = wolne(pokoje, ilosc, &ile_wolnych);
+
+    printf("Wolne pokoje: %i\n", ile_wolnych);
+    for(int k = 0; k < ile_wolnych; k++) {
+        printf("Pokój %d\n", k + 1);
+        printf("\tkod: %s\n", wolne_pokoje[k].kod_pokoju);
+        printf("\tcena: %f\n", wolne_pokoje[k].cena);
+        printf("\tstatus: %d\n", wolne_pokoje[k].status);
+    }
+    printf("\n");
+    printf("\n");
 
     float zysk_pokoje = zysk(pokoje, ilosc);
     printf("Zysk z aktualnie zajętych pokoi: %.2f\n", zysk_pokoje);
@@ -69,11 +80,12 @@ int main() {
 
     free(pokoje);
     free(koszt_osoby);
+    free(wolne_pokoje);
 
     return 0;
 }
 
-cost *koszt(hotel *pokoje, int ilosc) {
+cost* koszt(hotel *pokoje, int ilosc) {
     cost *koszt_osoby = malloc(ilosc * sizeof(cost));
 
     for (int i = 0; i < ilosc; i++) {
@@ -91,14 +103,28 @@ cost *koszt(hotel *pokoje, int ilosc) {
     return koszt_osoby;
 }
 
-int wolne(hotel *pokoje, int ilosc) {
-    int ile_wolnych = 0;
+hotel* wolne(hotel *pokoje, int ilosc, int *ile_wolnych) {
+    int _ile_wolnych = 0;
+    int helper_index = 0;
+
     for (int i = 0; i < ilosc; i++) {
         if (pokoje[i].status == 1) {
-            ile_wolnych++;
+            _ile_wolnych++;
         }
     }
-    return ile_wolnych;
+    
+    hotel *wolne_pokoje = malloc(_ile_wolnych * sizeof(hotel));
+
+    for (int j = 0; j < ilosc; j++) {
+        if (pokoje[j].status == 1) {
+            wolne_pokoje[helper_index] = pokoje[j];
+            helper_index++;
+        }
+    }
+
+    *ile_wolnych = _ile_wolnych;
+
+    return wolne_pokoje;
 }
 
 float zysk(hotel *pokoje, int ilosc) {
