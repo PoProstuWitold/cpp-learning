@@ -1,3 +1,4 @@
+// Jeżeli znamy rozmiar tablicy możemy ją zadeklarować statycznie, wstawić jako nie-wskaźnikowy parametr funkcji.
 // 1.
 // Baza danych: liczba pracowników (nazwiska, płace). Organizacja danych dowolna.
 // Funkcjonalności systemu informatycznego:

@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// strcmp(t1, t2) == 0 - teksty są takie same
+//strcpy(t1, t2) - wpisuje t2 do t1
+
 typedef struct Hotel {
     char kod_pokoju[3]; //ilosc osob, np. p1, p2, p10
     float cena;
@@ -11,9 +14,9 @@ typedef struct Hotel {
 typedef struct Koszt {
     hotel pokoj;
     float koszt;
-} koszta;
+} cost;
 
-koszta *koszt(hotel *pokoje, int ilosc);
+cost *koszt(hotel *pokoje, int ilosc);
 int wolne(hotel *pokoje, int ilosc);
 float zysk(hotel *pokoje, int ilosc);
 int rezerwacja(hotel *pokoje, int ilosc);
@@ -25,7 +28,6 @@ int main() {
     scanf("%i", &ilosc);
 
     hotel *pokoje = calloc(ilosc, sizeof(hotel));
-    koszta *koszt_osoby;
 
     for(int i = 0; i < ilosc; i++) {
 
@@ -41,7 +43,7 @@ int main() {
         printf("\n");
     }
 
-    koszt_osoby = koszt(pokoje, ilosc);
+    cost *koszt_osoby = koszt(pokoje, ilosc);
 
     printf("Koszt dla 1 osoby w każdym pokoju: \n");
     for(int j = 0; j < ilosc; j++) {
@@ -51,6 +53,7 @@ int main() {
         printf("\tstatus: %d\n", koszt_osoby[j].pokoj.status);
         printf("\tkoszt na osobe: %f\n", koszt_osoby[j].koszt);
     }
+    printf("\n");
 
     int wolne_pokoje = wolne(pokoje, ilosc);
     printf("Liczba wolnych pokoi: %i\n", wolne_pokoje);
@@ -65,12 +68,13 @@ int main() {
 
 
     free(pokoje);
+    free(koszt_osoby);
 
     return 0;
 }
 
-koszta *koszt(hotel *pokoje, int ilosc) {
-    koszta *koszt_osoby = malloc(ilosc * sizeof(koszta));
+cost *koszt(hotel *pokoje, int ilosc) {
+    cost *koszt_osoby = malloc(ilosc * sizeof(cost));
 
     for (int i = 0; i < ilosc; i++) {
         koszt_osoby[i].pokoj = pokoje[i];
