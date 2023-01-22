@@ -9,7 +9,6 @@
 
 int** find_max(float array[ROWS][COLS], int* max, int* count);
 void print_results(int max, int count, int** indices);
-void free_memory(int** indices);
 
 int main(void) {
 
@@ -45,9 +44,6 @@ int main(void) {
 
     // Wypisujemy wyniki
     print_results(max, count, indices);
-
-    // Zwalniamy pamięć
-    free_memory(indices);
 
     return 0;
 }
@@ -103,12 +99,4 @@ void print_results(int max, int count, int** indices) {
         printf("\n\n");
     }
     
-}
-
-void free_memory(int** indices) {
-    // Zwalniamy pamięć
-    for (int i = 0; i < ROWS; i++) {
-        free(indices[i]);
-    }
-    free(indices);
 }

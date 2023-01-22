@@ -2,12 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-// strcmp(t1, t2) == 0 - teksty są takie same
-// strcpy(t1, t2) - wpisuje t2 do t1
-
 typedef struct Hotel {
-    char kod_pokoju[3]; //ilosc osob, np. p1, p2, p10
-    float cena;
+    char * kod_pokoju; // ilosc osob, np. p1, p2, p3
+    float cena; // 40, 60, 100...
     int status; // wolny-1, zajęty-2
 } hotel;
 
@@ -23,28 +20,20 @@ int rezerwacja(hotel *pokoje, int ilosc);
 
 int main() {
     int ilosc;
-
     printf("Ile pokoi chcesz wprowadzić? ");
     scanf("%i", &ilosc);
 
     hotel *pokoje = calloc(ilosc, sizeof(hotel));
-
     for(int i = 0; i < ilosc; i++) {
-
         printf("Podaj kod (np. 'p1' - pokój jednosobowy) pokoju %d: ", i+1);
-        scanf("%s", &pokoje[i].kod_pokoju);
-
+        scanf("\n%m[^\n]", &pokoje[i].kod_pokoju);
         printf("Podaj cene pokoju %d: ", i+1);
         scanf("%f", &pokoje[i].cena);
-
         printf("Podaj status pokoju %d (np. wolny-1, zajęty-2): ", i+1);
         scanf("%d", &pokoje[i].status);
-
-        printf("\n");
     }
 
     cost *koszt_osoby = koszt(pokoje, ilosc);
-
     printf("Koszt dla 1 osoby w każdym pokoju: \n");
     for(int j = 0; j < ilosc; j++) {
         printf("Pokój %d\n", j + 1);
@@ -53,12 +42,9 @@ int main() {
         printf("\tstatus: %d\n", koszt_osoby[j].pokoj.status);
         printf("\tkoszt na osobe: %f\n", koszt_osoby[j].koszt);
     }
-    printf("\n");
-    printf("\n");
 
     int ile_wolnych = 0;
     hotel *wolne_pokoje = wolne(pokoje, ilosc, &ile_wolnych);
-
     printf("Wolne pokoje: %i\n", ile_wolnych);
     for(int k = 0; k < ile_wolnych; k++) {
         printf("Pokój %d\n", k + 1);
@@ -66,8 +52,6 @@ int main() {
         printf("\tcena: %f\n", wolne_pokoje[k].cena);
         printf("\tstatus: %d\n", wolne_pokoje[k].status);
     }
-    printf("\n");
-    printf("\n");
 
     float zysk_pokoje = zysk(pokoje, ilosc);
     printf("Zysk z aktualnie zajętych pokoi: %.2f\n", zysk_pokoje);
@@ -76,11 +60,6 @@ int main() {
         printf("Jest wolny pokój dla 3 osób.\n");
     else 
         printf("Nie ma wolnego pokoju dla 3 osób.\n");
-
-
-    free(pokoje);
-    free(koszt_osoby);
-    free(wolne_pokoje);
 
     return 0;
 }

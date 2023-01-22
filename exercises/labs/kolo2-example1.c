@@ -8,6 +8,7 @@
 // Proszę napisać ten system informatyczny.
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Pracownik {
     char lastname[50];

@@ -17,7 +17,6 @@ int main(void) {
 
     // Wczytaj tablicę 2-wymiarową
     printf("Wczytywanie tablicy dwuwymiarowej o wymiarach [%d][%d] \n", rows, cols);
-
     for (i = 0; i < rows; i++) {
         for (j = 0; j < cols; j++) {
             printf("Podaj element [%d][%d]: ", i, j);
