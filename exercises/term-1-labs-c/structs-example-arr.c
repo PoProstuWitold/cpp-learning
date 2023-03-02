@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 // wyswietlamy srednia ocen dla ucznia o podanym przez uzytkownika imieniu
 struct uczen {
     char imie[10];
@@ -14,19 +15,16 @@ int main() {
     float sr;
     for(i=0; i<n; i++) {
         printf("imie "); //kazdy uczen (o numerze= i) ma imie i 3 oceny
-        fgets(klasa[i].imie, sizeof(klasa[i].imie), stdin);
+        scanf(" %9[^\n]s", klasa[i].imie);
         printf("ocena z mat. ");
         scanf("%f", &klasa[i].mat);
         printf("ocena z fiz. ");
         scanf("%f", &klasa[i].fiz);
         printf("ocena z inf. ");
         scanf("%f", &klasa[i].inf);
-        // konieczne przy czytaniu tekstu po liczbie
-        fflush(stdin); // ZALEZY OD KOMPILATORA, ZŁA PRAKTYKA
-        flushBuffer(); // WSZEDZIE
     }
     printf("Kogo szukamy? Imie: "); //kogo szukamy?
-    fgets(kto, sizeof(kto), stdin);
+    scanf(" %9[^\n]s", kto);
     for(i=0; i<n; i++) { 
         //porownanie 2 tekstow, jesli sa rowne to strcmp zwraca 0
         if(strcmp(klasa[i].imie,kto) == 0) {
@@ -38,11 +36,4 @@ int main() {
     if(k == 0) //czyli uczen nie znaleziony
         printf(" Ucznia %s nie ma", kto);
     return 0;
-}
-
-void flushBuffer() {
-    int c;
-    do {
-        c = getchar();
-    } while (c != '\n' && c != EOF);
 }

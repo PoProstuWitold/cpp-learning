@@ -1,20 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 struct HURT {
     char * nazwa;
     int ilosc;
     double cena;
 };
-
 void wypelnij(struct HURT *ts, int n);
 int maksymalna_cena(const struct HURT *ts, int n);
 double srednia_wartosc(const struct HURT *ts, int n);
 int ilosc_o_nazwie(const struct HURT *ts, int n, const char *s);
-void flushBuffer();
-
-
 int main() {
     int n, max_ind;
     char * nazwa;
@@ -35,7 +30,6 @@ int main() {
     printf("\nIlosc towaru o nazwie \"%s\": %d\n", nazwa, ilosc_o_nazwie(tablica_struktur, n, nazwa));
     return 0;
 }
-
 void wypelnij(struct HURT *ts, int n) {
     for (int i = 0; i < n; ++i) {
         printf("\nPodaj nazwe towaru: ");
@@ -46,7 +40,6 @@ void wypelnij(struct HURT *ts, int n) {
         scanf("%lf", &ts[i].cena);
     }
 }
-
 int maksymalna_cena(const struct HURT *ts, int n) {
     int ind = 0;
     for (int i = 1; i < n; ++i)
@@ -54,14 +47,12 @@ int maksymalna_cena(const struct HURT *ts, int n) {
             ind = i;
     return ind;
 }
-
 double srednia_wartosc(const struct HURT *ts, int n) {
     double suma = 0.0;
     for (int i = 0; i < n; ++i)
         suma += ts[i].cena;
     return suma/n;
 }
-
 int ilosc_o_nazwie(const struct HURT *ts, int n, const char *s) {
     int ilosc = 0;
     for (int i = 0; i < n; ++i)
