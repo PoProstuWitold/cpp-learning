@@ -4,10 +4,10 @@ My list of courses and exercises for future learning
 - [Bro Code C Tutorial](https://www.youtube.com/watch?v=87SH2Cn0s9A) 
 
 #### Ongoing
-- None
+- [Bro Code C++ Tutorial](https://www.youtube.com/watch?v=-TkoO8Z07hI)
 
 #### Planned
-- [Bro Code C++ Tutorial](https://www.youtube.com/watch?v=-TkoO8Z07hI)
+- None
 
 #### Pinned for future
 - None
